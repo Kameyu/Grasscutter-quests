@@ -43,6 +43,7 @@ import org.slf4j.LoggerFactory;
 import javax.annotation.Nullable;
 import java.io.*;
 import java.util.Calendar;
+import java.util.Arrays;
 
 import static emu.grasscutter.config.Configuration.SERVER;
 import static emu.grasscutter.utils.Language.translate;
@@ -112,7 +113,8 @@ public final class Grasscutter {
         ResourceLoader.loadAll();
 
         // Generate handbooks.
-        Tools.createGmHandbooks();
+        if (Arrays.asList(args).contains("-handbooks"))
+			Tools.createGmHandbooks();
 
         // Initialize database.
         DatabaseManager.initialize();
